@@ -11,10 +11,17 @@ const config: Config = {
     colors:{
       primary:"#091242",
       secondary:"#BF473E",
+      gtext:"#454545"
 
     },
     backgroundImage:{
-      "hero-image":"url('/hero-image.png')"
+      "hero-image":"url('/hero-image.png')",
+      "filter-image":"url('/filter-hero.png')",
+      "filter-second-image":"url('/filter-second-image.jpg')",
+      
+    },
+     content:{
+      'price':"url('/uil_exchange.png)",
     }
   }
   },
