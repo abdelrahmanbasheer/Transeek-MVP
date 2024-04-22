@@ -24,3 +24,14 @@
   border-left: gray 1px solid;
   opacity: 15%;
 }
+.pricing::before{
+  position: absolute;
+  top: 0px;
+  left: -30px;
+  right: -15px;
+  bottom: 0px;
+  width: 300px;
+  margin: auto;
+  border-left: gray 1px solid;
+  opacity: 15%;
+}
