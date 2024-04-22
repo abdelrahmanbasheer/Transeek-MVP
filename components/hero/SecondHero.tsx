@@ -6,7 +6,7 @@ import cash from "@/assets/icons/second-hero-cash.png"
 const SecondHero = () => {
   return (
     <div className='relative'>
-    <div className='bg-white w-[1200px] shadow-md h-[600px] top-[22rem] left-[200px] absolute px-32 pt-24 grid grid-cols-2 gap-6'>
+    <div className='bg-white w-[1200px] shadow-md h-[600px] top-[22rem] left-[200px] 2xl:left-[300px] absolute px-32 pt-24 grid grid-cols-2 gap-6'>
         <div className='flex flex-col'>
         <img className='h-[23px] w-[72px]' src={header.src} alt="" />
         <h1 className='font-bold text-primary text-4xl mt-4'>We provide full range global logistics solutions</h1>
