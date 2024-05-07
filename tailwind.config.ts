@@ -18,6 +18,7 @@ const config: Config = {
       "hero-image":"url('/hero-image.png')",
       "filter-image":"url('/filter-hero.png')",
       "filter-second-image":"url('/filter-second-image.jpg')",
+      "warehouse-page-image":"url('/warehouse-page-bg.png')",
       
     },
      content:{
