@@ -1,23 +1,30 @@
 import React from 'react'
 import socials from "@/assets/icons/navbar-socials.png";
+import Link from 'next/link';
 const LowerNavbar = () => {
   return (
     <div className='px-36 flex justify-between bg-[#091242] bg-opacity-35 h-[80px] items-center text-white text-lg'>
       <ul className='flex gap-14'>
+      <Link href={"/"}>
       <li className=''>
-        <h1 className='hover:text-primary hover:brightness-200 cursor-pointer'>Home</h1>
+        <h1 className='hover:text-secondary hover:brightness-200 cursor-pointer'>Home</h1>
+      </li>
+      </Link>
+      <Link href={"/pricing"}>
+      <li>
+        <h1  className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer`}>Pricing</h1>
+      </li>
+      </Link>
+      <Link href={"/warehouse"}>
+      <li>
+        <h1 className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer`}>Warehouses</h1>
+      </li>
+      </Link>
+      <li>
+        <h1 className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer `}>Project</h1>
       </li>
       <li>
-        <h1  className={`nav border-white relative after:border-l-2 hover:text-primary hover:brightness-200 cursor-pointer`}>About</h1>
-      </li>
-      <li>
-        <h1 className={`nav border-white relative after:border-l-2 hover:text-primary hover:brightness-200 cursor-pointer`}>Pages </h1>
-      </li>
-      <li>
-        <h1 className={`nav border-white relative after:border-l-2 hover:text-primary hover:brightness-200 cursor-pointer `}>Project</h1>
-      </li>
-      <li>
-        <h1  className={`nav border-white relative after:border-l-2 hover:text-primary hover:brightness-200 cursor-pointer `}>Contact</h1>
+        <h1  className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer `}>Contact</h1>
       </li>
       <li className='ml-14 '>
         <img className='w-[170px]' src={socials.src} alt="" />
