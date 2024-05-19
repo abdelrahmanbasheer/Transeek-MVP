@@ -28,7 +28,7 @@ export default function Home() {
       <CarouselFinal></CarouselFinal>
       </section>
       <footer>
-        <Footer></Footer>
+        <Footer image={true}></Footer>
       </footer>
     </main>
     

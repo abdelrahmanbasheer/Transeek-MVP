@@ -1,5 +1,4 @@
 import Footer from '@/components/Footer'
-import LowerNavbar from '@/components/Navbar/LowerNavbar'
 import Navbar from '@/components/Navbar/Navbar'
 import React from 'react'
 import header from "@/assets/images/warehouse-page-header.png"
@@ -109,7 +108,7 @@ const page = () => {
     </ul>
       </main>
       <footer>
-        <Footer></Footer>
+        <Footer image={false}></Footer>
       </footer>
     </div>
   )

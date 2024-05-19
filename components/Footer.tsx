@@ -4,10 +4,10 @@ import logo from "@/assets/icons/logo.png"
 import email from "@/assets/icons/navbar-mail.png";
 import phone from "@/assets/icons/navbar-call.png";
 import socials from"@/assets/icons/navbar-socials.png"
-const Footer = () => {
+const Footer = ({image}:{image:boolean}) => {
   return (
     <div>
-    <img className='w-[100%]' src={heroImg.src} alt="" />
+    <img className={`${image ?"w-[100%]":"w-[0%]"}`} src={heroImg.src} alt="" />
     <div className='h-[567px] bg-[#091242]'>
     <div className='h-[117px] bg-white bg-opacity-5 flex pr-[400px] justify-center items-center gap-28'>
       <div className='bg-[#091242] w-[500px] h-[117px]'>

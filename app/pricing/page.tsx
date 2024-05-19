@@ -69,7 +69,7 @@ const page = () => {
       </div> 
     </main>
     <footer>
-    <Footer></Footer>
+    <Footer image={true}></Footer>
     </footer>
     </div>
   )
