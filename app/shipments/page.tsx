@@ -6,7 +6,34 @@ import blueIcon from "@/assets/icons/shipping-logo-1.png";
 import orangeIcon from "@/assets/icons/shipping-logo-2.png";
 import shipIcon from "@/assets/icons/shipping-logo-3.png";
 import Footer from '@/components/Footer';
+
+type shipmentType ={
+id:number,
+origin:string,
+destination:string,
+dateOfDispatch:string,
+timeToShip:number,
+price:number,
+weight:number,
+dateOfArrival:string,
+}[]
 const page = () => {
+    
+    const data:shipmentType=[
+        {
+            id:1232,
+            origin:"Los Angeles",
+            dateOfDispatch:"1/1/2024",
+            timeToShip:4,
+            dateOfArrival:"4/1/2024",
+            price:2000,
+            destination:"brussels",
+            weight:200,
+
+
+        }
+    ]
+    
   return (
     <div>
       <nav>
@@ -19,144 +46,57 @@ const page = () => {
      </div>
      <div className='mt-5'>
     <ul className='flex flex-col gap-[40px] items-center'>
-        <li className='w-[1200px] h-[288px] gap-[73px] flex'>
+        {
+            data.map((item)=>{
+                <li key={item.id} className='w-[1200px] h-[288px] gap-[73px] flex'>
         <div className='w-[840px]'>
             <div className='flex justify-between'>
         <img src={logo.src} alt="" />
-        <h1 className='font-bold text-[#000000] text-2xl text-opacity-60'>ID : 21854515</h1>
+        <h1 className='font-bold text-[#000000] text-2xl text-opacity-60'>ID : {item.id}</h1>
         </div>
         <div className='p-10 '>
         <ul className='flex self-center justify-between items-center'>
  
             <li className='flex flex-col relative'>
             <hr  className='w-[700px] h-[1px] bg-[#D0D5DD] z-[-50] top-[35px] absolute border-0'/>
-            <h1 className='text-primary'>Los angeles</h1>
+            <h1 className='text-primary'>{item.origin}</h1>
             <img src={blueIcon.src} className='w-[18px] h-[22px] items-center' alt="" />
-            <p className='text-[#667085]'>1/1/2024</p>
+            <p className='text-[#667085]'>{item.dateOfDispatch}</p>
             </li>
             <li className='flex flex-col'>
             <h1 className='text-[#D0D5DD]'>Shipped</h1>
             <img src={orangeIcon.src} className='w-[18px] h-[22px] mx-auto' alt="" />
-            <p className='text-[#667085]  mx-auto'>1/1/2024</p>
+            <p className='text-[#667085]  mx-auto'>{item.dateOfArrival}</p>
             </li>
             <li className='flex flex-col'>
-            <p className='text-[#667085] pb-1'>4 Days</p>
+            <p className='text-[#667085] pb-1'>{item.timeToShip}</p>
             <img src={shipIcon.src} className='w-[40px] h-[40px]  mx-auto' alt="" />
           
             </li>
             <li className='flex flex-col'>
             <h1 className='text-[#D0D5DD]'>Out Fee</h1>
             <img src={orangeIcon.src} className='w-[18px] h-[22px] mx-auto' alt="" />
-            <p className='text-[#667085]  mx-auto'>1/1/2024</p>
+            <p className='text-[#667085]  mx-auto'>{item.dateOfArrival}</p>
             </li>
             <li className='flex flex-col'>
-            <h1 className='text-[#D0D5DD]'>Brussels</h1>
+            <h1 className='text-[#D0D5DD]'>P{item.destination}</h1>
             <img src={orangeIcon.src} className='w-[18px] h-[22px] items-center' alt="" />
-            <p className='text-[#667085] '>1/1/2024</p>
+            <p className='text-[#667085] '>{item.dateOfArrival}</p>
             </li>
         </ul>
         </div>
         </div>
         <div className='flex flex-col'>
             <h4 className='font-bold'>OVERDUE 2023-12-31</h4>
-            <h4 className='font-bold'>ID 21400963</h4>
-            <h4 className='font-bold'>107.75 kg C02</h4>
-            <p className='p-1 bg-primary text-white w-[187px] font-bold h-[56px] text-center  my-3 rounded-lg'>1565$ <br /> request</p>
+            <h4 className='font-bold'>ID {item.id}</h4>
+            <h4 className='font-bold'>{item.weight} kg C02</h4>
+            <p className='p-1 bg-primary text-white w-[187px] font-bold h-[56px] text-center  my-3 rounded-lg'>{item.price}$ <br /> request</p>
             <h4 className='font-bold text-[#000000] text-opacity-60'>View Details</h4>
         </div>
         </li>
-        <li className='w-[1200px] h-[288px] gap-[73px] flex'>
-        <div className='w-[840px]'>
-            <div className='flex justify-between'>
-        <img src={logo.src} alt="" />
-        <h1 className='font-bold text-[#000000] text-2xl text-opacity-60'>ID : 21854515</h1>
-        </div>
-        <div className='p-10 '>
-        <ul className='flex self-center justify-between items-center'>
- 
-            <li className='flex flex-col relative'>
-            <hr  className='w-[700px] h-[1px] bg-[#D0D5DD] z-[-50] top-[35px] absolute border-0'/>
-            <h1 className='text-primary'>Los angeles</h1>
-            <img src={blueIcon.src} className='w-[18px] h-[22px] items-center' alt="" />
-            <p className='text-[#667085]'>1/1/2024</p>
-            </li>
-            <li className='flex flex-col'>
-            <h1 className='text-[#D0D5DD]'>Shipped</h1>
-            <img src={orangeIcon.src} className='w-[18px] h-[22px] mx-auto' alt="" />
-            <p className='text-[#667085]  mx-auto'>1/1/2024</p>
-            </li>
-            <li className='flex flex-col'>
-            <p className='text-[#667085] pb-1'>4 Days</p>
-            <img src={shipIcon.src} className='w-[40px] h-[40px]  mx-auto' alt="" />
-          
-            </li>
-            <li className='flex flex-col'>
-            <h1 className='text-[#D0D5DD]'>Out Fee</h1>
-            <img src={orangeIcon.src} className='w-[18px] h-[22px] mx-auto' alt="" />
-            <p className='text-[#667085]  mx-auto'>1/1/2024</p>
-            </li>
-            <li className='flex flex-col'>
-            <h1 className='text-[#D0D5DD]'>Brussels</h1>
-            <img src={orangeIcon.src} className='w-[18px] h-[22px] items-center' alt="" />
-            <p className='text-[#667085] '>1/1/2024</p>
-            </li>
-        </ul>
-        </div>
-        </div>
-        <div className='flex flex-col'>
-            <h4 className='font-bold'>OVERDUE 2023-12-31</h4>
-            <h4 className='font-bold'>ID 21400963</h4>
-            <h4 className='font-bold'>107.75 kg C02</h4>
-            <p className='p-1 bg-primary text-white w-[187px] font-bold h-[56px] text-center  my-3 rounded-lg'>1565$ <br /> request</p>
-            <h4 className='font-bold text-[#000000] text-opacity-60'>View Details</h4>
-        </div>
-        </li>
-        <li className='w-[1200px] h-[288px] gap-[73px] flex'>
-        <div className='w-[840px]'>
-            <div className='flex justify-between'>
-        <img src={logo.src} alt="" />
-        <h1 className='font-bold text-[#000000] text-2xl text-opacity-60'>ID : 21854515</h1>
-        </div>
-        <div className='p-10 '>
-        <ul className='flex self-center justify-between items-center'>
- 
-            <li className='flex flex-col relative'>
-            <hr  className='w-[700px] h-[1px] bg-[#D0D5DD] z-[-50] top-[35px] absolute border-0'/>
-            <h1 className='text-primary'>Los angeles</h1>
-            <img src={blueIcon.src} className='w-[18px] h-[22px] items-center' alt="" />
-            <p className='text-[#667085]'>1/1/2024</p>
-            </li>
-            <li className='flex flex-col'>
-            <h1 className='text-[#D0D5DD]'>Shipped</h1>
-            <img src={orangeIcon.src} className='w-[18px] h-[22px] mx-auto' alt="" />
-            <p className='text-[#667085]  mx-auto'>1/1/2024</p>
-            </li>
-            <li className='flex flex-col'>
-            <p className='text-[#667085] pb-1'>4 Days</p>
-            <img src={shipIcon.src} className='w-[40px] h-[40px]  mx-auto' alt="" />
-          
-            </li>
-            <li className='flex flex-col'>
-            <h1 className='text-[#D0D5DD]'>Out Fee</h1>
-            <img src={orangeIcon.src} className='w-[18px] h-[22px] mx-auto' alt="" />
-            <p className='text-[#667085]  mx-auto'>1/1/2024</p>
-            </li>
-            <li className='flex flex-col'>
-            <h1 className='text-[#D0D5DD]'>Brussels</h1>
-            <img src={orangeIcon.src} className='w-[18px] h-[22px] items-center' alt="" />
-            <p className='text-[#667085] '>1/1/2024</p>
-            </li>
-        </ul>
-        </div>
-        </div>
-        <div className='flex flex-col'>
-            <h4 className='font-bold'>OVERDUE 2023-12-31</h4>
-            <h4 className='font-bold'>ID 21400963</h4>
-            <h4 className='font-bold'>107.75 kg C02</h4>
-            <p className='p-1 bg-primary text-white w-[187px] font-bold h-[56px] text-center  my-3 rounded-lg'>1565$ <br /> request</p>
-            <h4 className='font-bold text-[#000000] text-opacity-60'>View Details</h4>
-        </div>
-        </li>
+            })
+        }
+        
     </ul>
      </div>
     </main>
