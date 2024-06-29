@@ -1,14 +1,14 @@
 'use client'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar/Navbar'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import header from "@/assets/images/warehouse-page-header.png"
 import tester from "@/assets/images/warehouse-page-test.png"
 import PagesNavbar from '@/components/Navbar/PagesNavbar'
 import warehouse from "@/assets/icons/selector-warehouse.png"
 import land from "@/assets/icons/land.png"
-
-  import search from "@/assets/icons/search.png"
+import useSWR from 'swr'
+import search from "@/assets/icons/search.png"
 type warehouseType={
   name:string,
   location:string,
@@ -18,27 +18,41 @@ type warehouseType={
   phoneNo:string,
 
 }[]
-const page = () => {
-  const data:warehouseType=[
-    {
-      name:"Test-1",
-      location:"26 october city, cairo, egypt",
-      capacity:"200",
-      email:"test@gmail.com",
-      inventory:"200",
-      phoneNo:"0155999221",
 
+const page = () => {
+  
+  // const data:warehouseType=[
+  //   {
+  //     name:"Test-1",
+  //     location:"26 october city, cairo, egypt",
+  //     capacity:"200",
+  //     email:"test@gmail.com",
+  //     inventory:"200",
+  //     phoneNo:"0155999221",
+
+  //   }
+  // ]
+  const [allWarehouses, setAllWarehouses] = useState<warehouseType>([])
+  const [warehouses, setWarehouses] = useState<warehouseType>([])
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      
+        const response = await fetch('http://localhost:3000/api/warehouses');
+        const data = await response.json();
+        setAllWarehouses(data);
+        setWarehouses(data);
     }
-  ]
+    fetchWarehouses();
+  }, []);
+  
   const [query, setQuery] = useState("")
-  const [warehouses, setWarehouses] = useState(data)
+
   const handleSearch = (query:string) => {
-    const filteredData = data.filter((item) => {
+    const filteredData = allWarehouses.filter((item) => {
       return item.location.toLowerCase().includes(query.toLowerCase()) 
     })
     setWarehouses(filteredData)
   }
-  
   return (
     <div>
         <nav>
@@ -80,7 +94,7 @@ handleSearch(query)
         </div>
     <ul className='flex flex-col gap-6 mx-[300px] last:mb-10'>
       {
-        warehouses.map((item)=>(
+        warehouses?.map((item)=>(
           <li className='grid grid-cols-2  border-t-2 p-3'>
           <img className='border-r-2 px-5 border-gray-100' src={tester.src} alt="" />
           <div className='flex flex-col ml-5 gap-3'>

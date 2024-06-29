@@ -1,9 +1,9 @@
 'use client'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar/Navbar'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import header from "@/assets/images/warehouse-page-header.png"
-import trucks from "@/assets/images/trucks.jpg"
+import trucksimg from "@/assets/images/trucks.jpg"
 import PagesNavbar from '@/components/Navbar/PagesNavbar'
 import warehouse from "@/assets/icons/selector-warehouse.png"
 import land from "@/assets/icons/land.png"
@@ -18,24 +18,36 @@ type warehouseType={
 
 }[]
 const page = () => {
-  const data:warehouseType=[
-    {
-      name:"Test-1",
-      location:"26 october city, cairo, egypt",
-      capacity:"200",
-      email:"test@gmail.com",
-      inventory:"200",
-      phoneNo:"0155999221",
+  // const data:warehouseType=[
+  //   {
+  //     name:"Test-1",
+  //     location:"26 october city, cairo, egypt",
+  //     capacity:"200",
+  //     email:"test@gmail.com",
+  //     inventory:"200",
+  //     phoneNo:"0155999221",
 
-    }
-  ]
+  //   }
+  // ]
+  
   const [query, setQuery] = useState("")
-  const [warehouses, setWarehouses] = useState(data)
+  const [trucks, setTrucks] = useState<warehouseType>([])
+  const [allTrucks, setAllTrucks] = useState<warehouseType>([])
+  useEffect(() => {
+    const fetchTrucks = async () => {
+      
+        const response = await fetch('http://localhost:3000/api/trucks');
+        const data = await response.json();
+        setAllTrucks(data);
+        setTrucks(data);
+    }
+    fetchTrucks();
+  }, []);
   const handleSearch = (query:string) => {
-    const filteredData = data.filter((item) => {
+    const filteredData = allTrucks.filter((item) => {
       return item.location.toLowerCase().includes(query.toLowerCase()) 
     })
-    setWarehouses(filteredData)
+    setTrucks(filteredData)
   }
   return (
     <div>
@@ -77,9 +89,9 @@ handleSearch(query)
         </div>
     <ul className='flex flex-col gap-6 mx-[300px] last:mb-10'>
       {
-        warehouses.map((item)=>(
+        trucks?.map((item)=>(
           <li className='grid grid-cols-2  border-t-2 p-3'>
-          <img className='border-r-2 px-5 border-gray-100' src={trucks.src} alt="" />
+          <img className='border-r-2 px-5 border-gray-100' src={trucksimg.src} alt="" />
           <div className='flex flex-col ml-5 gap-3'>
           <h1 className='font-bold text-left text-primary text-2xl mt-4'>{item.name}</h1>
           <p className='text-#666C89 font-medium mt-5 text-sm opacity-70'>We are dedicated to creating added value <br /> for our customers by implementing modern <br /> technology in our operations.</p>

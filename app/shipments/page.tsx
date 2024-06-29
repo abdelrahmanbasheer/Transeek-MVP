@@ -1,7 +1,7 @@
 'use client'
 import Navbar from '@/components/Navbar/Navbar'
 import PagesNavbar from '@/components/Navbar/PagesNavbar'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from "@/assets/icons/maersk.png";
 import blueIcon from "@/assets/icons/shipping-logo-1.png";
 import orangeIcon from "@/assets/icons/shipping-logo-2.png";
@@ -37,29 +37,46 @@ const page = () => {
     const [origin, setOrigin] = useState("")
     const [destination, setDestination] = useState("")
     const [date, setDate] = React.useState<Date>()
-    const data:shipmentType=[
-        {
-            id:1232,
-            origin:"Los Angeles",
-            dateOfDispatch:"4/1/2024",
-            timeToShip:4,
-            dateOfArrival:"8/1/2024",
-            price:2000,
-            destination:"brussels",
-            weight:200,
+    // const data:shipmentType=[
+    //     {
+    //         id:1232,
+    //         origin:"Los Angeles",
+    //         dateOfDispatch:"4/1/2024",
+    //         timeToShip:4,
+    //         dateOfArrival:"8/1/2024",
+    //         price:2000,
+    //         destination:"brussels",
+    //         weight:200,
   
   
-        }
-    ]
-  const [shipements, setShipments] = useState(data)
-  const handleSearch = (origin:string, destination:string,date?:Date) => {
-    const filteredData = data.filter((item) => {
+    //     }
+    // ]
+    const [allShipments, setAllShipments] = useState<shipmentType>([])
+
+  useEffect(() => {
+    const fetchWarehouses = async () => {
+      
+        const response = await fetch('http://localhost:3000/api/shipments');
+        const data = await response.json();
+        setAllShipments(data);
+        setShipments(data);
+    }
+    fetchWarehouses();
+  }, []);
+  const [shipements, setShipments] = useState<shipmentType>([])
+  const handleSearch = () => {
+    const filteredData = allShipments.filter((item) => {
       const itemDate = new Date(item.dateOfDispatch);
-      return item.origin.toLowerCase().includes(origin.toLowerCase()) && item.destination.toLowerCase().includes(destination.toLowerCase()) &&itemDate.toDateString() === date?.toDateString()
-    })
-    setShipments(filteredData)
-  }
-    
+      const originMatches = origin ? item.origin.toLowerCase().includes(origin.toLowerCase()) : true;
+      const destinationMatches = destination ? item.destination.toLowerCase().includes(destination.toLowerCase()) : true;
+      const dateMatches = date ? itemDate.toDateString() === date.toDateString() : true;
+
+      return originMatches && destinationMatches && dateMatches;
+    });
+
+    setShipments(filteredData);
+  };
+    console.log(shipements[0]?.origin)
   return (
     <div>
       <nav>
@@ -117,7 +134,7 @@ const page = () => {
     <div className='my-auto'>
       
   <img onClick={()=>{
-handleSearch(origin, destination,date)
+handleSearch()
   }} className='my-auto ml-8 h-[35px] hover:cursor-pointer' src={search.src}></img>
     </div>
     </div>
@@ -128,7 +145,7 @@ handleSearch(origin, destination,date)
      <div className='mt-5'>
     <ul className='flex flex-col gap-[40px] items-center'>
         {
-            shipements.map((item)=>(
+            shipements?.map((item)=>(
                 <li key={item.id} className='w-[1200px] h-[288px] gap-[73px] flex'>
         <div className='w-[840px]'>
             <div className='flex justify-between'>
@@ -142,12 +159,12 @@ handleSearch(origin, destination,date)
             <hr  className='w-[700px] h-[1px] bg-[#D0D5DD] z-[-50] top-[35px] absolute border-0'/>
             <h1 className='text-primary'>{item.origin}</h1>
             <img src={blueIcon.src} className='w-[18px] h-[22px] items-center' alt="" />
-            <p className='text-[#667085]'>{item.dateOfDispatch}</p>
+            <p className='text-[#667085]'>{item.dateOfDispatch.split('T')[0]}</p>
             </li>
             <li className='flex flex-col'>
             <h1 className='text-[#D0D5DD]'>Shipped</h1>
             <img src={orangeIcon.src} className='w-[18px] h-[22px] mx-auto' alt="" />
-            <p className='text-[#667085]  mx-auto'>{item.dateOfDispatch}</p>
+            <p className='text-[#667085]  mx-auto'>{item.dateOfDispatch.split('T')[0]}</p>
             </li>
             <li className='flex flex-col'>
             <p className='text-[#667085] pb-1'>{item.timeToShip} days</p>
@@ -157,7 +174,7 @@ handleSearch(origin, destination,date)
             <li className='flex flex-col'>
             <h1 className='text-[#D0D5DD]'>{item.destination}</h1>
             <img src={orangeIcon.src} className='w-[18px] h-[22px] items-center' alt="" />
-            <p className='text-[#667085] '>{item.dateOfArrival}</p>
+            <p className='text-[#667085] '>{item.dateOfArrival.split('T')[0]}</p>
             </li>
         </ul>
         </div>
