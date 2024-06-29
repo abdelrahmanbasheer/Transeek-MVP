@@ -20,12 +20,17 @@ const LowerNavbar = () => {
         <h1 className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer`}>Warehouses</h1>
       </li>
       </Link>
+      <Link href={"/shipments"}>
       <li>
-        <h1 className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer `}>Project</h1>
+        <h1 className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer `}>Shipments</h1>
       </li>
+      </Link>
+      <Link href={"/trucks"}>
       <li>
-        <h1  className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer `}>Contact</h1>
+        <h1  className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer `}>Trucks</h1>
       </li>
+      </Link>
+      
       <li className='ml-14 '>
         <img className='w-[170px]' src={socials.src} alt="" />
       </li>
