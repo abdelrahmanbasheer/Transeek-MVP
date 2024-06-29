@@ -41,27 +41,27 @@ const Checkout = () => {
   const [payment, setPayment] = useState("credit");
   const { id } = useParams();
   const [product, setProduct] = useState<productType | undefined>(undefined)
-  const data:shipmentType=[
-    {
-      id:1232,
-      origin:"Los Angeles",
-      dateOfDispatch:"1/1/2024",
-      timeToShip:4,
-      dateOfArrival:"4/1/2024",
-      price:2000,
-      destination:"brussels",
-      weight:200,
-    }
-  ]
-const getProductById = (id: number) => {
-  return data.find((item) => item.id === id);
+  // const data:shipmentType=[
+  //   {
+  //     id:1232,
+  //     origin:"Los Angeles",
+  //     dateOfDispatch:"1/1/2024",
+  //     timeToShip:4,
+  //     dateOfArrival:"4/1/2024",
+  //     price:2000,
+  //     destination:"brussels",
+  //     weight:200,
+  //   }
+  // ]
+  useEffect(() => {
+  const fetchWarehouses = async () => {
+      
+    const response = await fetch(`http://localhost:3000/api/shipments/${id}`);
+    const data = await response.json();
+    setProduct(data);
 }
-useEffect(() => {
-  const product = getProductById(Number(id));
-  setProduct(product);
-
-}, [])
-
+fetchWarehouses();
+}, []);
   return (
     <div>
       <nav>
@@ -209,7 +209,7 @@ useEffect(() => {
                                     <h1 className="text-[#505050] text-sm my-2">+12345678910</h1>
                                     <h1 className="text-[#505050] text-sm my-2">mohamedwael@gmail.com</h1>
                                     <h1 className="text-[#505050] text-sm my-2">2345678910</h1>
-                                    <h1 className="text-[#717171] font-bold text-sm my-3">$543.02</h1>
+                                    <h1 className="text-[#717171] font-bold text-sm my-3">{product?.price}</h1>
                                     </div>
                                   </div>
                                   <DialogClose asChild>
