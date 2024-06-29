@@ -16,7 +16,6 @@ export default function Home() {
       <Solutions></Solutions>
       </section>
       <section className="h-[720px] bg-filter-image bg-cover pt-[220px]">
-      <Filter></Filter>
       </section>
       <section className="mt-20">
       <div className="h-[1025px] bg-filter-second-image bg-no-repeat bg-[length:100%_496px]">

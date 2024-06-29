@@ -3,11 +3,10 @@ import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar/Navbar'
 import React, { useState } from 'react'
 import header from "@/assets/images/warehouse-page-header.png"
-import tester from "@/assets/images/warehouse-page-test.png"
+import trucks from "@/assets/images/trucks.jpg"
 import PagesNavbar from '@/components/Navbar/PagesNavbar'
 import warehouse from "@/assets/icons/selector-warehouse.png"
 import land from "@/assets/icons/land.png"
-
   import search from "@/assets/icons/search.png"
 type warehouseType={
   name:string,
@@ -38,20 +37,19 @@ const page = () => {
     })
     setWarehouses(filteredData)
   }
-  
   return (
     <div>
         <nav>
       <Navbar></Navbar>
-      <PagesNavbar title={"warehouse"}></PagesNavbar>
+      <PagesNavbar title={"Trucks"}></PagesNavbar>
       </nav>
       <main>
         <div className=''>
         <div className=' bg-white bg-opacity-60 px-[30%]  mt-14 relative '>
     <ul className='flex gap-5'>
     <li className='flex '>
-        <img className='rounded-full mr-2' src={warehouse.src} alt="" />
-    <h1 className='font-bold text-lg '>Warehouse</h1> 
+     
+    <h1 className='font-bold text-lg '>Trucks</h1> 
     </li>
     </ul>
 <div className='mt-5 uppercase ml-1 text-[#454545] flex'>
@@ -75,29 +73,19 @@ handleSearch(query)
     </div>
       </div>
         <div className='my-16'>
-        <img className='mx-auto' src={header.src} alt="" />
-        <h1 className='font-bold text-center text-primary text-4xl mt-4'>Warehouse</h1>
+        <h1 className='font-bold text-center text-primary text-4xl mt-4'>Trucks</h1>
         </div>
     <ul className='flex flex-col gap-6 mx-[300px] last:mb-10'>
       {
         warehouses.map((item)=>(
           <li className='grid grid-cols-2  border-t-2 p-3'>
-          <img className='border-r-2 px-5 border-gray-100' src={tester.src} alt="" />
+          <img className='border-r-2 px-5 border-gray-100' src={trucks.src} alt="" />
           <div className='flex flex-col ml-5 gap-3'>
           <h1 className='font-bold text-left text-primary text-2xl mt-4'>{item.name}</h1>
           <p className='text-#666C89 font-medium mt-5 text-sm opacity-70'>We are dedicated to creating added value <br /> for our customers by implementing modern <br /> technology in our operations.</p>
           <ul  className='marker:text-primary list-disc pl-5' role='list'>
           <li className='font-semibold'>
          location : {item.location}
-          </li>
-          <li className='font-semibold'>
-          Capacity: {item.capacity} sq. ft.
-          </li>
-          <li className='font-semibold'>
-          Inventory: {item.inventory} units
-          </li>
-          <li className='font-semibold'>
-          Security: 24/7 surveillance, access control
           </li>
           <li className='font-semibold'>
           email: {item.email}

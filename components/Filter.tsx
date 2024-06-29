@@ -50,8 +50,8 @@ const selected=true;
   </SelectTrigger>
   <SelectContent>
     <SelectItem value="light">1</SelectItem>
-    <SelectItem value="dark">2</SelectItem>
-    <SelectItem value="system">3</SelectItem>
+    <SelectItem value="light">2</SelectItem>
+    <SelectItem value="light">3</SelectItem>
   </SelectContent>
 </Select>
 <div className='ml-10'>

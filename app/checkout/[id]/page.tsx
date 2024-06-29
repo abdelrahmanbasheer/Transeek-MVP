@@ -16,11 +16,51 @@ import {
 } from "@/components/ui/dialog";
 import image1 from "@/assets/icons/cards_ title.png";
 import success from"@/assets/icons/payment_success.png";
-
-
+import { useParams } from "next/navigation";
+type shipmentType ={
+  id:number,
+  origin:string,
+  destination:string,
+  dateOfDispatch:string,
+  timeToShip:number,
+  price:number,
+  weight:number,
+  dateOfArrival:string,
+  }[]
+type productType ={
+  id:number,
+  origin:string,
+  destination:string,
+  dateOfDispatch:string,
+  timeToShip:number,
+  price:number,
+  weight:number,
+  dateOfArrival:string,
+  }
 const Checkout = () => {
   const [payment, setPayment] = useState("credit");
+  const { id } = useParams();
+  const [product, setProduct] = useState<productType | undefined>(undefined)
+  const data:shipmentType=[
+    {
+      id:1232,
+      origin:"Los Angeles",
+      dateOfDispatch:"1/1/2024",
+      timeToShip:4,
+      dateOfArrival:"4/1/2024",
+      price:2000,
+      destination:"brussels",
+      weight:200,
+    }
+  ]
+const getProductById = (id: number) => {
+  return data.find((item) => item.id === id);
+}
+useEffect(() => {
+  const product = getProductById(Number(id));
+  setProduct(product);
 
+}, [])
 
   return (
     <div>
@@ -76,14 +116,14 @@ const Checkout = () => {
             </form>
           </div>
           <div className="w-[416px] h-[700px] bg-white border-[#EDEDED] border-[1px] rounded-lg p-6">
-            <h1 className="font-semibold text-2xl ">Premium</h1>
+            <h1 className="font-semibold text-2xl ">Your Shipping</h1>
             <div className="flex gap-4 mt-4">
-           
-              <div className="ml-6">
-               
-                <h1 className="text-[#717171] text-sm">1</h1>
+              <img src={logo.src} className="" alt="" />
+              <div>
+                <h1 className="text-[#717171] text-sm">Maersk</h1>
+                <h1 className="text-[#717171] text-sm">{product?.id}</h1>
                 <h1 className="text-[#717171] text-sm">{payment}</h1>
-          
+                <h1 className="text-[#717171] text-sm">Maersk</h1>
               </div>
             </div>
             <div className="flex justify-between  p-6 items-center">
@@ -93,7 +133,7 @@ const Checkout = () => {
                 <h1 className="text-[#717171] text-sm my-1">Shipment cost</h1>
               </div>
               <div>
-                <h1 className="text-[#717171] text-sm">$59</h1>
+                <h1 className="text-[#717171] text-sm">${product?.price}</h1>
                 <h1 className="text-[#717171] text-sm">$0.00</h1>
               </div>
             </div>
@@ -101,7 +141,7 @@ const Checkout = () => {
             <div className="flex justify-between p-6">
               <h1 className="text-md">Grand Total</h1>
     
-              <h1 className="text-md font-semibold">59</h1>
+              <h1 className="text-md font-semibold">{product?.price}</h1>
             </div>
             <Dialog>
               {payment === "paypal" ? (
