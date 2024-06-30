@@ -54,14 +54,14 @@ const page = () => {
     const [allShipments, setAllShipments] = useState<shipmentType>([])
 
   useEffect(() => {
-    const fetchWarehouses = async () => {
+    const fetchShipments = async () => {
       
         const response = await fetch('http://localhost:3000/api/shipments');
         const data = await response.json();
         setAllShipments(data);
         setShipments(data);
     }
-    fetchWarehouses();
+    fetchShipments();
   }, []);
   const [shipements, setShipments] = useState<shipmentType>([])
   const handleSearch = () => {
