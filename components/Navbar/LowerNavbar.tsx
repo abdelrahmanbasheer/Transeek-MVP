@@ -1,7 +1,8 @@
+
 import React from 'react'
-import socials from "@/assets/icons/navbar-socials.png";
 import Link from 'next/link';
 const LowerNavbar = () => {
+
   return (
     <div className='px-36 flex justify-between bg-[#091242] bg-opacity-35 h-[80px] items-center text-white text-lg'>
       <ul className='flex gap-14'>
@@ -31,17 +32,9 @@ const LowerNavbar = () => {
       </li>
       </Link>
       
-      <li className='ml-14 '>
-        <img className='w-[170px]' src={socials.src} alt="" />
-      </li>
       </ul>
-    <ul className='flex gap-10 '>
-      <li className='p-[22px] w-[200px] h-[80px] text-center bg-primary cursor-pointer'> 
-        <h1>Subscribe</h1>
-      </li>
-      <li className='p-[20px] w-[200px] h-[80px] text-center font-semibold text-black bg-white cursor-pointer'> 
-        <h1 >Get Started</h1>
-      </li>
+    <ul className='flex gap-10'>
+   
     </ul>
     </div>
   )

@@ -2,38 +2,43 @@
 import Footer from '@/components/Footer'
 import LowerNavbar from '@/components/Navbar/LowerNavbar'
 import Navbar from '@/components/Navbar/Navbar'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import search from "@/assets/icons/search.png"
 import Link from 'next/link'
+type shipmentType ={
+    id:number,
+    companyName:string,
+    country:string,
+    experience:string,
+    email:string,
+    phoneNumber:string,
+}[]
 const page = () => {
     const [productType, setProductType] = useState("")
     const [origin, setOrigin] = useState("")
     const forwarder={
     id:1,
     }
-const data=[
-    {
-        type:"vegetables",
-        origin:"egypt"
-    },
-    {
-        type:"chemicals",
-        origin:"germany"
-    },
-    {
-        type:"cars",
-        origin:"usa"
+const [allShipments, setAllShipments] = useState<shipmentType>([])
+
+useEffect(() => {
+  const fetchWarehouses = async () => {
     
-    }
-]
-const [filter, setFilter] = useState(data)
+      const response = await fetch('http://localhost:3000/api/freight-forwarders');
+      const data = await response.json();
+      setAllShipments(data);
+      setShipments(data);
+  }
+  fetchWarehouses();
+}, []);
+const [shipements, setShipments] = useState<shipmentType>([])
 const handleSearch = (productType: string, origin: string) => {
     const normalizedProductType = productType.toLowerCase().trim();
     const normalizedOrigin = origin.toLowerCase().trim();
 
-    setFilter(data.filter(({ type, origin }) =>
-        type.toLowerCase().includes(normalizedProductType) &&
-        origin.toLowerCase().includes(normalizedOrigin)
+    setShipments(allShipments.filter(({  country }) =>
+    
+        country.toLowerCase().includes(normalizedOrigin)
     ));
 };
   return (
@@ -59,12 +64,12 @@ handleSearch(productType,origin)
     </div>
    <ul className=' flex  flex-col items-center mt-10 gap-5'>
 {
-    filter.map((item)=>(
-        <Link href={`/freightforwarder/${forwarder.id}`}>
-        <li className='flex gap-5 w-[550px] h-[88px] p-5 rounded-xl bg-[#EBEBEB]'>
-            <p>Name: {item.origin}</p>
-            <p>product type: {item.type}</p>
-            <p>Port of Origin: {item.origin}</p>
+    shipements.map((item)=>(
+        <Link href={`/freightforwarder/${item.id}`}>
+        <li className='flex gap-5 w-[750px] h-[88px] p-5 rounded-xl bg-[#EBEBEB]'>
+            <p>Name: {item.companyName}</p>
+            <p>Years of Experience: {item.experience}</p>
+            <p>Port of Origin: {item.country}</p>
         </li>
         </Link>
     
