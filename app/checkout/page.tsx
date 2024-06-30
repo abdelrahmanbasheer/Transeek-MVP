@@ -3,8 +3,8 @@ import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar/Navbar";
 import PagesNavbar from "@/components/Navbar/PagesNavbar";
 import React, { useEffect, useState } from "react";
-import logo from "@/assets/icons/maersk_notext.png";
 import paypal from "@/assets/icons/paypal.png";
+import axios from "axios"
 import {
   Dialog,
   DialogClose,
@@ -20,8 +20,24 @@ import success from"@/assets/icons/payment_success.png";
 
 const Checkout = () => {
   const [payment, setPayment] = useState("credit");
+  const handleUpdate = async () => {
+    try {
+      const url = `http://localhost:3000/api/freight-forwarders/1/subscription`;
+
+      const res = await axios.put(url, { isSubscribed:true }, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
 
 
+    } catch (error) {
+      console.error('Error:', error);
+      
+    }
+  };
+
+  handleUpdate();
   return (
     <div>
       <nav>
@@ -169,7 +185,7 @@ const Checkout = () => {
                                     <h1 className="text-[#505050] text-sm my-2">+12345678910</h1>
                                     <h1 className="text-[#505050] text-sm my-2">mohamedwael@gmail.com</h1>
                                     <h1 className="text-[#505050] text-sm my-2">2345678910</h1>
-                                    <h1 className="text-[#717171] font-bold text-sm my-3">$543.02</h1>
+                                    <h1 className="text-[#717171] font-bold text-sm my-3">$59</h1>
                                     </div>
                                   </div>
                                   <DialogClose asChild>
@@ -181,7 +197,7 @@ const Checkout = () => {
                               </DialogDescription>
                             </DialogHeader>
                           </DialogContent>
-                          <DialogTrigger className="p-4 bg-primary text-white w-[257px] h-[47px] text-center pb-10 mt-5 rounded-lg cursor-pointer">
+                          <DialogTrigger className="p-4 bg-primary text-white w-[257px] h-[47px] text-center pb-10 mt-5 rounded-lg cursor-pointer" onClick={()=>handleUpdate}>
                             Buy
                           </DialogTrigger>
                         </Dialog>
