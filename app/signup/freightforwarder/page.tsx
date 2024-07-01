@@ -4,6 +4,7 @@ import logo from "@/assets/icons/logoXL.png";
 import { useForm } from 'react-hook-form';
 import axios from "axios"
 import img from "@/public/login-page-bg.png"
+import { useRouter } from 'next/navigation';
 const page = () => {
     interface IFormInput {
       email: string;
@@ -28,7 +29,7 @@ const page = () => {
     });
       const [response, setResponse] = useState(null);
       const onSubmit= async (formData:IFormInput)=>{
-        
+        const router=useRouter();
         try {
           const response = await axios.post('http://localhost:3000/auth/signup/forwarder', formData, {
             headers: {
@@ -36,6 +37,7 @@ const page = () => {
             }
           });
           setResponse(response.data);
+          router.push('/login/freightforwarder');
         } catch (error) {
           console.error('Error:', error);
         }

@@ -3,7 +3,10 @@ import React, { useState } from 'react'
 import logo from "@/assets/icons/logoXL.png";
 import { useForm } from 'react-hook-form';
 import axios from "axios"
+import { useRouter } from 'next/navigation';
+import { useUserStore } from '@/lib/useUserStore';
 const page = () => {
+  const router=useRouter();
     interface IFormInput {
       email: string;
         password: string;
@@ -25,10 +28,9 @@ const page = () => {
         typeOfGoods:"",
       },
     });
-    
-      const [curr, setCurr] = useState("freightforwarder")
       const [response, setResponse] = useState(null);
-      console.log(curr)
+      const setuser = useUserStore((state) => state.setUser);
+      const user = useUserStore((state) => state.user);
       const onSubmit= async (formData:IFormInput)=>{
         
         try {
@@ -37,8 +39,9 @@ const page = () => {
               'Content-Type': 'application/json'
             }
           });
+          const userData=response.data.user;
+          router.push('/login/exporter');
           setResponse(response.data);
-          window.location.href = "/pricing/exporter"
         } catch (error) {
           console.error('Error:', error);
         }

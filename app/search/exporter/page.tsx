@@ -6,6 +6,7 @@ import React, { useEffect, useState } from 'react'
 import search from "@/assets/icons/search.png"
 import Link from 'next/link'
 import { useUserStore } from '@/lib/useUserStore'
+import subscribed from "@/assets/images/subscribed.png"
 type shipmentType ={
     id:number,
     companyName:string,
@@ -13,6 +14,7 @@ type shipmentType ={
     experience:string,
     email:string,
     phoneNumber:string,
+    isSubscribed?:boolean
 }[]
 const page = () => {
     const user = useUserStore((state) => state.user);
@@ -73,10 +75,14 @@ handleSearch(productType,origin)
 {
 shipements.map((item)=>(
  <Link href={`/freightforwarder/${item.id}`}>
- <li className='flex gap-5 w-[750px] h-[88px] p-5 rounded-xl bg-[#EBEBEB]'>
+ <li className='flex gap-5 w-[750px] h-[88px] p-5 rounded-xl bg-[#EBEBEB] relative'>
      <p>Name: {item.companyName}</p>
      <p>Years of Experience: {item.experience}</p>
      <p>Port of Origin: {item.country}</p>
+     {
+        item.isSubscribed && 
+        <img className='absolute w-[50px] left-[90%] top-[10%]' src={subscribed.src} alt="" />
+     }
  </li>
  </Link>
 

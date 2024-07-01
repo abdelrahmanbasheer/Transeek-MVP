@@ -22,7 +22,7 @@ const LowerNavbar = () => {
         <h1  className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer`}>account center</h1>
       </li>
       </Link>
-      <Link href={user?.typeOfGoods == null ? "/search/freightforwarder":"/search/exporter"}>
+      <Link href={user?.typeOfGoods == null ? "/search/exporter":"/search/exporter"}>
       <li>
         <h1  className={`nav border-white relative after:border-l-2 hover:text-secondary hover:brightness-200 cursor-pointer`}>Search</h1>
       </li>
