@@ -5,6 +5,7 @@ import Navbar from '@/components/Navbar/Navbar'
 import React, { useEffect, useState } from 'react'
 import search from "@/assets/icons/search.png"
 import Link from 'next/link'
+import { useUserStore } from '@/lib/useUserStore'
 type shipmentType ={
     id:number,
     companyName:string,
@@ -14,6 +15,7 @@ type shipmentType ={
     phoneNumber:string,
 }[]
 const page = () => {
+    const user = useUserStore((state) => state.user);
     const [productType, setProductType] = useState("")
     const [origin, setOrigin] = useState("")
     const forwarder={
@@ -46,36 +48,48 @@ const handleSearch = (productType: string, origin: string) => {
         <Navbar></Navbar>
         <LowerNavbar></LowerNavbar>
         <div className=' bg-white bg-opacity-60 px-[25%]  mt-14 relative '>
-<div className='mt-5 uppercase ml-1 text-[#454545] flex'>
-    <p className='ml-20'>Product type</p>
-    <p className='ml-[250px]'>Origin</p>
-    </div>
-    <div className='w-[1100px] h-[60px]  bg-white flex'>
-    <input className="ml-7 bg-gray-50 border border-gray-300 text-gtext text-sm rounded-lg focus:outline-none block w-[300px] h-[40px] my-auto p-2.5 " type="text"
-     value={productType} onChange={(e)=>{setProductType(e.target.value)}}/>
-    <input className="ml-7 bg-gray-50 border border-gray-300 text-gtext text-sm rounded-lg focus:outline-none block w-[300px] h-[40px] my-auto p-2.5 " type="text"
-     value={origin} onChange={(e)=>{setOrigin(e.target.value)}}/>
-    <div className='my-auto'>
-  <img onClick={()=>{
+        <div className='mt-5 uppercase ml-1 text-[#454545] flex'>
+   
+   <p className='ml-20'>Product type</p>
+   <p className='ml-[250px]'>Origin</p>
+   </div>
+   <div className='w-[1100px] h-[60px]  bg-white flex'>
+   <input className="ml-7 bg-gray-50 border border-gray-300 text-gtext text-sm rounded-lg focus:outline-none block w-[300px] h-[40px] my-auto p-2.5 " type="text"
+    value={productType} onChange={(e)=>{setProductType(e.target.value)}}/>
+   <input className="ml-7 bg-gray-50 border border-gray-300 text-gtext text-sm rounded-lg focus:outline-none block w-[300px] h-[40px] my-auto p-2.5 " type="text"
+    value={origin} onChange={(e)=>{setOrigin(e.target.value)}}/>
+   <div className='my-auto'>
+ <img onClick={()=>{
 handleSearch(productType,origin)
-  }} className='my-auto ml-8 h-[35px] hover:cursor-pointer' src={search.src}></img>
-    </div>
-    </div>
-    </div>
-   <ul className=' flex  flex-col items-center mt-10 gap-5'>
+ }} className='my-auto ml-8 h-[35px] hover:cursor-pointer' src={search.src}></img>
+   </div>
+   </div>
+   </div>
+        {
+        user?.isSubscribed 
+        ?
+        <div>
+        <ul className=' flex  flex-col items-center mt-10 gap-5'>
 {
-    shipements.map((item)=>(
-        <Link href={`/freightforwarder/${item.id}`}>
-        <li className='flex gap-5 w-[750px] h-[88px] p-5 rounded-xl bg-[#EBEBEB]'>
-            <p>Name: {item.companyName}</p>
-            <p>Years of Experience: {item.experience}</p>
-            <p>Port of Origin: {item.country}</p>
-        </li>
-        </Link>
-    
-    ))
+shipements.map((item)=>(
+ <Link href={`/freightforwarder/${item.id}`}>
+ <li className='flex gap-5 w-[750px] h-[88px] p-5 rounded-xl bg-[#EBEBEB]'>
+     <p>Name: {item.companyName}</p>
+     <p>Years of Experience: {item.experience}</p>
+     <p>Port of Origin: {item.country}</p>
+ </li>
+ </Link>
+
+))
 }
-   </ul>
+</ul>
+ </div>
+        :
+        
+        <p className='text-center'>Subscribe to Search for FreightForwarders</p>
+    }
+
+
         <footer className='mt-[300px]'>
             <Footer image={true}></Footer>
         </footer>

@@ -5,6 +5,7 @@ import header from "@/assets/images/pricing-page-header.png"
 import correct from "@/assets/icons/pricing-page-true.png"
 import wrong from "@/assets/icons/pricing-page-false.png"
 import React from 'react'
+import Link from 'next/link'
 
 const page = () => {
   return (
@@ -37,9 +38,11 @@ const page = () => {
     <h1 className='text-primary'>Get Sponsored </h1>
     
     </li>
-    <li className='p-[20px] mx-auto mt-10 w-[200px] h-[80px] text-center font-semibold text-white pt-6 bg-primary cursor-pointer'> 
-        <h1 >Choose Plan</h1>
+    <Link href={"/"}>
+    <li className='p-[20px] mx-auto mt-10 w-[200px] h-[80px] text-center font-semibold text-white pt-6 bg-primary '> 
+        <h1 >Current Plan</h1>
       </li>
+        </Link>
       </ul>
       </div>
       <div className='w-[380px] h-[740px] bg-primary'>
@@ -58,12 +61,14 @@ const page = () => {
     <h1 className='text-white'>Warehousing </h1>
     </li>
     <li className='flex gap-3 justify-items-start border-t-2 border-b-2 p-5 pl-10 mx-16 items-center'>
-    <img className='pb-2' src={wrong.src} alt="" />
+    <img className='pb-2' src={correct.src} alt="" />
     <h1 className='text-white'>Get Sponsored </h1>
     </li>
+    <Link href={"/checkout/freightforwarder"}>
     <li className='p-[20px] mx-auto mt-10 w-[200px] h-[80px] text-center font-semibold text-black pt-6 bg-gradient-to-br from-[#FFB629] to-[#fdd6a5] cursor-pointer'> 
         <h1 >Choose Plan</h1>
       </li>
+        </Link>
       </ul>
       </div>
       </div> 

@@ -38,9 +38,11 @@ const page = () => {
     <h1 className='text-primary'>Find Freight Forwarder </h1>
     
     </li>
+    <Link href={"/"}>
     <li className='p-[20px] mx-auto mt-10 w-[200px] h-[80px] text-center font-semibold text-white pt-6 bg-primary '> 
         <h1 >Current Plan</h1>
       </li>
+        </Link>
       </ul>
       </div>
       <div className='w-[380px] h-[740px] bg-primary'>
@@ -63,7 +65,7 @@ const page = () => {
     <h1 className='text-white'>Find Freight Forwarder </h1>
     </li>
     <li className='p-[20px] mx-auto mt-10 w-[200px] h-[80px] text-center font-semibold text-black pt-6 bg-gradient-to-br from-[#FFB629] to-[#fdd6a5] cursor-pointer'> 
-    <Link href={"/checkout"}>
+    <Link href={"/checkout/exporter"}>
         <h1 >Choose Plan</h1>
         </Link>
       </li>

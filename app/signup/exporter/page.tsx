@@ -38,6 +38,7 @@ const page = () => {
             }
           });
           setResponse(response.data);
+          window.location.href = "/pricing/exporter"
         } catch (error) {
           console.error('Error:', error);
         }
@@ -77,7 +78,6 @@ const page = () => {
             <button className='w-[512px] bg-[#515DEF] rounded-md p-4 text-white mt-2' type="submit">Sign up</button>
             <p className='text-center mt-3 text-sm font-semibold'>Already have an account?<span className='text-[#353d92] font-bold'><a href="/login"> Login </a></span></p>
             </form>
-            {response && <p className='text-center mt-4'>{JSON.stringify(response)}</p>}
         </div>
     </div>
   )
