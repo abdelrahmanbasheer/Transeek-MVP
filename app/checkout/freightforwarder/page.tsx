@@ -16,13 +16,15 @@ import {
 } from "@/components/ui/dialog";
 import image1 from "@/assets/icons/cards_ title.png";
 import success from"@/assets/icons/payment_success.png";
+import { useUserStore } from "@/lib/useUserStore";
 
 
 const Checkout = () => {
+  const user = useUserStore((state) => state.user);
   const [payment, setPayment] = useState("credit");
   const handleUpdate = async () => {
     try {
-      const url = `http://localhost:3000/api/freight-forwarders/1/subscription`;
+      const url = `http://localhost:3000/api/freight-forwarders/${user?.id}/subscription`;
 
       const res = await axios.put(url, { isSubscribed:true }, {
         headers: {
@@ -182,9 +184,9 @@ const Checkout = () => {
                                     </div>
                                     <div className="text-right">
                                     <h1 className="text-[#505050] text-sm my-2">Net Banking</h1>
-                                    <h1 className="text-[#505050] text-sm my-2">+12345678910</h1>
-                                    <h1 className="text-[#505050] text-sm my-2">mohamedwael@gmail.com</h1>
-                                    <h1 className="text-[#505050] text-sm my-2">2345678910</h1>
+                                    <h1 className="text-[#505050] text-sm my-2">{user?.phoneNumber}0</h1>
+                                    <h1 className="text-[#505050] text-sm my-2">{user?.email}</h1>
+                                    <h1 className="text-[#505050] text-sm my-2">123154</h1>
                                     <h1 className="text-[#717171] font-bold text-sm my-3">$59</h1>
                                     </div>
                                   </div>
