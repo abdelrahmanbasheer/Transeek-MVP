@@ -6,6 +6,7 @@ import axios from "axios"
 import img from "@/public/login-page-bg.png"
 import { useRouter } from 'next/navigation';
 const page = () => {
+  const router=useRouter();
     interface IFormInput {
       email: string;
         password: string;
@@ -29,7 +30,7 @@ const page = () => {
     });
       const [response, setResponse] = useState(null);
       const onSubmit= async (formData:IFormInput)=>{
-        const router=useRouter();
+      
         try {
           const response = await axios.post('http://localhost:3000/auth/signup/forwarder', formData, {
             headers: {

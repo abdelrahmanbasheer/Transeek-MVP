@@ -18,21 +18,21 @@ type warehouseType={
 
 }[]
 const page = () => {
-  // const data:warehouseType=[
-  //   {
-  //     name:"Test-1",
-  //     location:"26 october city, cairo, egypt",
-  //     capacity:"200",
-  //     email:"test@gmail.com",
-  //     inventory:"200",
-  //     phoneNo:"0155999221",
+  const data:warehouseType=[
+    {
+      name:"Test-1",
+      location:"26 october city, cairo, egypt",
+      capacity:"200",
+      email:"test@gmail.com",
+      inventory:"200",
+      phoneNo:"0155999221",
 
-  //   }
-  // ]
+    }
+  ]
   
   const [query, setQuery] = useState("")
-  const [trucks, setTrucks] = useState<warehouseType>([])
-  const [allTrucks, setAllTrucks] = useState<warehouseType>([])
+  const [trucks, setTrucks] = useState<warehouseType>(data)
+  const [allTrucks, setAllTrucks] = useState<warehouseType>(data)
   useEffect(() => {
     const fetchTrucks = async () => {
       

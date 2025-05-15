@@ -21,29 +21,19 @@ type warehouseType={
 
 const page = () => {
   
-  // const data:warehouseType=[
-  //   {
-  //     name:"Test-1",
-  //     location:"26 october city, cairo, egypt",
-  //     capacity:"200",
-  //     email:"test@gmail.com",
-  //     inventory:"200",
-  //     phoneNo:"0155999221",
+  const data:warehouseType=[
+    {
+      name:"Test-1",
+      location:"26 october city, cairo, egypt",
+      capacity:"200",
+      email:"test@gmail.com",
+      inventory:"200",
+      phoneNo:"0155999221",
 
-  //   }
-  // ]
-  const [allWarehouses, setAllWarehouses] = useState<warehouseType>([])
-  const [warehouses, setWarehouses] = useState<warehouseType>([])
-  useEffect(() => {
-    const fetchWarehouses = async () => {
-      
-        const response = await fetch('http://localhost:3000/api/warehouses');
-        const data = await response.json();
-        setAllWarehouses(data);
-        setWarehouses(data);
     }
-    fetchWarehouses();
-  }, []);
+  ]
+  const [allWarehouses, setAllWarehouses] = useState<warehouseType>(data)
+  const [warehouses, setWarehouses] = useState<warehouseType>(data)
   
   const [query, setQuery] = useState("")
 

@@ -10,10 +10,8 @@ import Footer from '@/components/Footer';
 import sea  from "@/assets/icons/sea.png"
 import search from "@/assets/icons/search.png"
 import Link from 'next/link';
-
 import { format } from "date-fns"
 import { Calendar as CalendarIcon } from "lucide-react"
-
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Calendar } from "@/components/ui/calendar"
@@ -37,33 +35,33 @@ const page = () => {
     const [origin, setOrigin] = useState("")
     const [destination, setDestination] = useState("")
     const [date, setDate] = React.useState<Date>()
-    // const data:shipmentType=[
-    //     {
-    //         id:1232,
-    //         origin:"Los Angeles",
-    //         dateOfDispatch:"4/1/2024",
-    //         timeToShip:4,
-    //         dateOfArrival:"8/1/2024",
-    //         price:2000,
-    //         destination:"brussels",
-    //         weight:200,
+    const data:shipmentType=[
+        {
+            id:1232,
+            origin:"Los Angeles",
+            dateOfDispatch:"4/1/2024",
+            timeToShip:4,
+            dateOfArrival:"8/1/2024",
+            price:2000,
+            destination:"brussels",
+            weight:200,
   
   
-    //     }
-    // ]
-    const [allShipments, setAllShipments] = useState<shipmentType>([])
+        }
+    ]
+    const [allShipments, setAllShipments] = useState<shipmentType>(data)
 
-  useEffect(() => {
-    const fetchShipments = async () => {
+  // useEffect(() => {
+  //   const fetchShipments = async () => {
       
-        const response = await fetch('http://localhost:3000/api/shipments');
-        const data = await response.json();
-        setAllShipments(data);
-        setShipments(data);
-    }
-    fetchShipments();
-  }, []);
-  const [shipements, setShipments] = useState<shipmentType>([])
+  //       const response = await fetch('http://localhost:3000/api/shipments');
+  //       const data = await response.json();
+  //       setAllShipments(data);
+  //       setShipments(data);
+  //   }
+  //   fetchShipments();
+  // }, []);
+  const [shipements, setShipments] = useState<shipmentType>(data)
   const handleSearch = () => {
     const filteredData = allShipments.filter((item) => {
       const itemDate = new Date(item.dateOfDispatch);
@@ -76,7 +74,7 @@ const page = () => {
 
     setShipments(filteredData);
   };
-    console.log(shipements[0]?.origin)
+
   return (
     <div>
       <nav>

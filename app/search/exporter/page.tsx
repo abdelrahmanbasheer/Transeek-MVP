@@ -75,15 +75,16 @@ handleSearch(productType,origin)
 {
 shipements.map((item)=>(
  <Link href={`/freightforwarder/${item.id}`}>
+      {
+        item.isSubscribed &&
  <li className='flex gap-5 w-[750px] h-[88px] p-5 rounded-xl bg-[#EBEBEB] relative'>
      <p>Name: {item.companyName}</p>
      <p>Years of Experience: {item.experience}</p>
      <p>Port of Origin: {item.country}</p>
-     {
-        item.isSubscribed && 
         <img className='absolute w-[50px] left-[90%] top-[10%]' src={subscribed.src} alt="" />
-     }
+     
  </li>
+}
  </Link>
 
 ))
