@@ -27,7 +27,7 @@ type shipmentType ={
     weight:number,
     dateOfArrival:string,
     }
-const page = () => {
+const AccFR = () => {
     const user = useUserStore((state) => state.user);
     const [allShipments, setAllShipments] = useState<shipmentType>()
     const [shipments, setShipments] = useState<shipmentsType>()
@@ -107,4 +107,4 @@ const page = () => {
   )
 }
 
-export default page
+export default AccFR

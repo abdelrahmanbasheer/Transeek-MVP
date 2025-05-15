@@ -1,13 +1,12 @@
 'use client'
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar/Navbar'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import header from "@/assets/images/warehouse-page-header.png"
 import tester from "@/assets/images/warehouse-page-test.png"
 import PagesNavbar from '@/components/Navbar/PagesNavbar'
 import warehouse from "@/assets/icons/selector-warehouse.png"
 import land from "@/assets/icons/land.png"
-import useSWR from 'swr'
 import search from "@/assets/icons/search.png"
 type warehouseType={
   name:string,
@@ -19,7 +18,7 @@ type warehouseType={
 
 }[]
 
-const page = () => {
+const Warehouse = () => {
   
   const data:warehouseType=[
     {
@@ -124,4 +123,4 @@ handleSearch(query)
   )
 }
 
-export default page
+export default Warehouse

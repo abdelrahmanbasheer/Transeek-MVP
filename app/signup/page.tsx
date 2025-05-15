@@ -2,7 +2,7 @@
 import React from 'react'
 import logo from "@/assets/icons/logoXL.png";
 import Link from 'next/link';
-const page = () => {
+const Signup = () => {
        return (
     <div className='flex'>
         <img src=".././login-page-bg.png" className='h-screen' alt="" />
@@ -22,4 +22,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Signup

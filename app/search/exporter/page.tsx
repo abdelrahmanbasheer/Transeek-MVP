@@ -16,7 +16,7 @@ type shipmentType ={
     phoneNumber:string,
     isSubscribed?:boolean
 }[]
-const page = () => {
+const SearchExp = () => {
     const user = useUserStore((state) => state.user);
     const [productType, setProductType] = useState("")
     const [origin, setOrigin] = useState("")
@@ -104,4 +104,4 @@ shipements.map((item)=>(
   )
 }
 
-export default page
+export default SearchExp

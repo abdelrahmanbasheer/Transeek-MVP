@@ -17,7 +17,7 @@ type warehouseType={
   phoneNo:string,
 
 }[]
-const page = () => {
+const Trucks = () => {
   const data:warehouseType=[
     {
       name:"Test-1",
@@ -120,4 +120,4 @@ handleSearch(query)
   )
 }
 
-export default page
+export default Trucks

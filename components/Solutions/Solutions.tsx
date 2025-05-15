@@ -42,7 +42,7 @@ const Solutions = () => {
     </li>
     </ul>
     </div>
-    <h1 className='text-center text-primary font-extrabold text-4xl mt-[200px]'>We've Assisted Clients in Saving Over 50,000 Work Hours <br /> Streamlining Their Search for Optimal Quotations.</h1>
+    <h1 className='text-center text-primary font-extrabold text-4xl mt-[200px]'>We ve Assisted Clients in Saving Over 50,000 Work Hours <br /> Streamlining Their Search for Optimal Quotations.</h1>
     </div>
   )
 }

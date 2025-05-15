@@ -7,7 +7,7 @@ import wrong from "@/assets/icons/pricing-page-false.png"
 import React from 'react'
 import Link from 'next/link'
 
-const page = () => {
+const PriceExp = () => {
   return (
     <div>
     <Navbar></Navbar>
@@ -80,4 +80,4 @@ const page = () => {
   )
 }
 
-export default page
+export default PriceExp

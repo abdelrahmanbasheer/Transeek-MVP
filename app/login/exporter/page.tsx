@@ -5,7 +5,7 @@ import axios from "axios"
 import { useForm } from 'react-hook-form';
 import { useUserStore } from '@/lib/useUserStore';
 import { useRouter } from 'next/navigation';
-const page = () => {
+const LoginExp = () => {
   
   const router = useRouter();
   const setuser = useUserStore((state) => state.setUser);
@@ -100,4 +100,4 @@ const page = () => {
   )
 }
 
-export default page
+export default LoginExp

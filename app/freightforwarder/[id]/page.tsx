@@ -12,7 +12,7 @@ type shipmentType ={
   email:string,
   phoneNumber:string,
 }
-const page = () => {
+const Fri = () => {
  const {id} =useParams()
   const [allShipments, setAllShipments] = useState<shipmentType>()
   useEffect(() => {
@@ -60,4 +60,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Fri

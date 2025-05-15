@@ -4,7 +4,7 @@ import LowerNavbar from '@/components/Navbar/LowerNavbar'
 import Navbar from '@/components/Navbar/Navbar'
 import React, { useState } from 'react'
 
-const page = () => {
+const SearchFr = () => {
     const [country, setCountry] = useState(''); 
     const [city, setCity] = useState(''); 
     const [yearsOfExperience, setYearsOfExperience] = useState(0); 
@@ -36,4 +36,4 @@ const page = () => {
   )
 }
 
-export default page
+export default SearchFr

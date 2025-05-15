@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import axios from "axios"
 import { useRouter } from 'next/navigation';
 import { useUserStore } from '@/lib/useUserStore';
-const page = () => {
+const Expo = () => {
   const router=useRouter();
     interface IFormInput {
       email: string;
@@ -86,4 +86,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Expo

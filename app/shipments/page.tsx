@@ -31,7 +31,7 @@ price:number,
 weight:number,
 dateOfArrival:string,
 }[]
-const page = () => {
+const Shipment = () => {
     const [origin, setOrigin] = useState("")
     const [destination, setDestination] = useState("")
     const [date, setDate] = React.useState<Date>()
@@ -199,4 +199,4 @@ handleSearch()
   )
 }
 
-export default page  
+export default Shipment  
